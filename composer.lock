@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bbd6334ec571315f777d69cfc7f4964",
+    "content-hash": "78f49a38ad0ff1fed4e3ca538826785b",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -79,6 +79,66 @@
                 "theme"
             ],
             "time": "2017-10-14T10:17:48+00:00"
+        },
+        {
+            "name": "acacha/events",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../events",
+                "reference": "7af45bd48dafdeadfe2fdee4adceef059e5e8d6a",
+                "shasum": null
+            },
+            "require": {
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Acacha\\Events\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Acacha\\Events\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "check-style": [
+                    "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ],
+                "fix-style": [
+                    "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergi Tur Badenas",
+                    "email": "sergiturbadenas@gmail.com",
+                    "homepage": "https://github.com/acacha",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/acacha/events",
+            "keywords": [
+                "acacha",
+                "events"
+            ]
         },
         {
             "name": "acacha/filesystem",
@@ -4635,7 +4695,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "acacha/events": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

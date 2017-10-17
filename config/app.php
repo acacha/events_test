@@ -178,6 +178,8 @@ return [
          * Package Service Providers...
          */
 
+        Acacha\Events\Providers\EventsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

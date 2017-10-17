@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    dump('Prova');
     return view('welcome');
 });
 
