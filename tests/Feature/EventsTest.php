@@ -47,10 +47,7 @@ class EventsTest extends TestCase
     public function testShowAnEvent()
     {
 //        $this->withoutExceptionHandling();
-        // Preparo
         $event = factory(Event::class)->create();
-//        dump($event->name);
-        // Executo
         $response = $this->get('/events/' . $event->id);
         // Comprovo
         $response->assertStatus(200);
@@ -61,7 +58,6 @@ class EventsTest extends TestCase
         $response->assertSeeText('Event:');
         $response->assertSeeText($event->name);
         $response->assertSeeText($event->description);
-
 
     }
 
@@ -154,17 +150,25 @@ class EventsTest extends TestCase
     public function testDeleteEvent()
     {
         // Preparo
+        dump(Event::all()->count());
         $event = factory(Event::class)->create();
+        dump(Event::all()->count());
         // Executo
         $response = $this->delete('/events/' . $event->id);
-        // Comprovo
-//        $response->assertStatus(200);
-        $response->assertRedirect('events');
-        $response->assertSeeText('Deleted ok!');
 
+        $response->dump();
+
+        // Comprovo
+        dump(Event::all()->count());
         $this->assertDatabaseMissing('events',[
             'name' => $event->name,
             'description' => $event->description,
         ]);
+
+//        $response->assertStatus(200);
+        $response->assertRedirect('events');
+        $response->assertSeeText('Deleted ok!');
+
+
     }
 }
