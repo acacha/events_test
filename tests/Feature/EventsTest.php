@@ -81,7 +81,7 @@ class EventsTest extends TestCase
         $response = $this->get('/events/create');
         // Comprovo
         $response->assertStatus(200);
-        $response->assertViewIs('create_event');
+        $response->assertViewIs('events::create_event');
         $response->assertSeeText('Create Event');
     }
 
@@ -145,21 +145,18 @@ class EventsTest extends TestCase
     }
 
     /**
-     * @group working
+     * @group caca1
      */
     public function testDeleteEvent()
     {
         // Preparo
-        dump(Event::all()->count());
         $event = factory(Event::class)->create();
-        dump(Event::all()->count());
         // Executo
-        $response = $this->delete('/events/' . $event->id);
+        $response = $this->call('DELETE','/events/' . $event->id);
 
-        $response->dump();
+//        $response->dump();
 
         // Comprovo
-        dump(Event::all()->count());
         $this->assertDatabaseMissing('events',[
             'name' => $event->name,
             'description' => $event->description,
@@ -167,7 +164,7 @@ class EventsTest extends TestCase
 
 //        $response->assertStatus(200);
         $response->assertRedirect('events');
-        $response->assertSeeText('Deleted ok!');
+        $response->assertSeeText('Event was deleted successful');
 
 
     }
