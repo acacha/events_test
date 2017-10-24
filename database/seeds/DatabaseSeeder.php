@@ -2,6 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
+use Acacha\Events\Models\Event;
+
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**

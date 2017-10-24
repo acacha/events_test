@@ -1,7 +1,5 @@
 <?php
 
-echo "Fitxer routes";
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +12,6 @@ echo "Fitxer routes";
 */
 
 Route::get('/', function () {
-    dump('Prova');
     return view('welcome');
 });
 
