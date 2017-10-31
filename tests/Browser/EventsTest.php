@@ -28,6 +28,7 @@ class EventsTest extends DuskTestCase
     }
 
     /**
+     * @group caca
      * @test
      */
     public function edit_url_show_a_form_with_correct_values()
