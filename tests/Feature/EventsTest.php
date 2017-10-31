@@ -15,6 +15,13 @@ class EventsTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp()
+    {
+        parent::setUp();
+//        dump('HOLA');
+//        $this->withoutExceptionHandling();
+    }
+
     /**
      * @group failing
      *
@@ -88,12 +95,17 @@ class EventsTest extends TestCase
     public function testShowEditEventForm()
     {
         // Preparo
+        $event = factory(Event::class)->create();
+
         // Executo
-        $response = $this->get('/events/edit');
+        $response = $this->get('/events/edit/' . $event->id);
         // Comprovo
         $response->assertStatus(200);
         $response->assertViewIs('edit_event');
         $response->assertSeeText('Edit Event');
+
+        $response->assertSeeText($event->name);
+        $response->assertSeeText($event->description);
     }
 
     public function testStoreEventForm()
