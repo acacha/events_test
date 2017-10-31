@@ -58,7 +58,8 @@ class EventsTest extends DuskTestCase
             $browser->visit('/events/create')
                 ->type('name', $faker->sentence)
                 ->type('description', $faker->paragraph)
-                ->press('Create');
+                ->press('Create')
+                ->pause(10000);
         });
     }
 }

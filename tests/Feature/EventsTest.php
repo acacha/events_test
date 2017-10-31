@@ -112,20 +112,27 @@ class EventsTest extends TestCase
     {
         // Preparo
         $event = factory(Event::class)->make();
+
+//        $event = new Event();
+//        $event->name = 'prova';
+//        $event->description = 'asdasdasdasd';
+//        $event->save();
+
         // Executo
         $response = $this->post('/events',[
             'name' => $event->name,
             'description' => $event->description,
         ]);
         // Comprovo
-        $response->assertStatus(200);
-        $response->assertRedirect('events/create');
-        $response->assertSeeText('Created ok!');
 
         $this->assertDatabaseHas('events',[
             'name' => $event->name,
             'description' => $event->description,
         ]);
+
+        $response->assertRedirect('events/create');
+//        $response->assertSeeText('Created ok!');
+
     }
 
     public function testUpdateEventForm()
