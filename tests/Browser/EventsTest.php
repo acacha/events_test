@@ -49,7 +49,6 @@ class EventsTest extends DuskTestCase
     }
 
     /**
-     * @group a
      * @test
      */
     public function an_user_can_create_an_event()
@@ -60,7 +59,24 @@ class EventsTest extends DuskTestCase
                 ->type('name', $faker->sentence)
                 ->type('description', $faker->paragraph)
                 ->press('Create')
-                ->pause(10000);
+                ->assertSee('Created ok');
+        });
+    }
+
+    /**
+     * @group caca     *
+     * @test
+     */
+    public function an_user_can_edit_an_event()
+    {
+        $event = factory(Event::class)->create();
+        $faker = Factory::create();
+        $this->browse(function (Browser $browser) use ($faker, $event) {
+            $browser->visit('/events/edit/' . $event->id)
+                ->type('name', $faker->sentence)
+                ->type('description', $faker->paragraph)
+                ->press('Update')
+                ->assertSee('Edited ok');
         });
     }
 }

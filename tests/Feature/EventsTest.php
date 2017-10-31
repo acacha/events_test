@@ -139,16 +139,13 @@ class EventsTest extends TestCase
     {
         // Preparo
         $event = factory(Event::class)->create();
+
         // Executo
         $newEvent = factory(Event::class)->make();
-        $response = $this->patch('/events/' . $event->id,[
+        $response = $this->put('/events/' . $event->id,[
             'name' => $newEvent->name,
             'description' => $newEvent->description,
         ]);
-        // Comprovo
-        $response->assertStatus(200);
-        $response->assertRedirect('events/create');
-        $response->assertSeeText('Edited ok!');
 
         $this->assertDatabaseHas('events',[
             'id' =>  $event->id,
@@ -161,6 +158,12 @@ class EventsTest extends TestCase
             'name' => $event->name,
             'description' => $event->description,
         ]);
+
+        // Comprovo
+        $response->assertRedirect('events/edit');
+//        $response->assertSeeText('Edited ok!');
+
+
     }
 
     /**
