@@ -101,11 +101,11 @@ class EventsTest extends TestCase
         $response = $this->get('/events/edit/' . $event->id);
         // Comprovo
         $response->assertStatus(200);
-        $response->assertViewIs('edit_event');
+        $response->assertViewIs('events::edit_event');
         $response->assertSeeText('Edit Event');
 
-        $response->assertSeeText($event->name);
-        $response->assertSeeText($event->description);
+        $response->assertSee($event->name);
+        $response->assertSee($event->description);
     }
 
     public function testStoreEventForm()
