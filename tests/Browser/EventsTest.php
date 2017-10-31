@@ -64,7 +64,7 @@ class EventsTest extends DuskTestCase
     }
 
     /**
-     * @group caca     *
+     * @group caca
      * @test
      */
     public function an_user_can_edit_an_event()
