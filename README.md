@@ -28,3 +28,8 @@ Projecte: tinkeringJsonApi
 
 - Vue component: https://gist.github.com/acacha/891bae9e5497346cf6f4a48b9d522e5b
 - Vue component test:  https://gist.github.com/acacha/9fea3c99326b61671d983d34d5c5c2fa
+- Laravel Blade view: https://gist.github.com/acacha/93d676daf953a589a704ed1827138083
+
+# Tasques
+
+- Utilitzeu el menu de la sidebar per apuntar a les diferents URLS de la vostra aplicació
