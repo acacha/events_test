@@ -58,5 +58,60 @@ Objectiu: executar els testos amb npm run test
 test: "mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require events/tests/Javascript/setup.js events/tests/Javascript/**.*.spec.js"
 ```
 
+## Configuració Path resolve NPM
+
+Cal informar a webpack que a part de la carpeta node_modules hi ha més carpetes on pot trobar mòduls en local
+
+Cal fer modificacions al fitxer webpack-mix.js
+
+Just despres de **.sourceMaps()** afegir:
+
+```
+.webpackConfig({
+    resolve: {
+      modules: [
+        path.resolve(__dirname, './events/resources/assets/js'),
+        path.resolve(__dirname, 'node_modules')
+      ]
+    }
+  })
+```
+
+I cal convertir la carpeta /events/resources/assets/js en un paquet npm amb:
+
+```
+npm init -y
+```
+
+ Canvieu el nom del paquet pel nom del projecte amb vendor davant. Exemple:
+ 
+```
+acacha-events
+```
     
+Canvieu també el main:
+
+```
+main:'events-bootstrap.js'
+```
+
+I creeu el fitxer events-bootstrap.js:
+
+Mireu tota la estructura al codi del professor amb exemple de com ha de ser el fitxer.
+
+Finalment cal que feu un require del paquet al projecte de test. Al fitxer resources/assets/js/app.js 
+després de carregar vue:
+
+```
+window.Vue = require('vue')
+```
+
+Poseu un require
+
+```
+require('events-bootstrap');
+```
+
+Comproveu compila ok npm run dev.
+  
   

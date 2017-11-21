@@ -24,4 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 
     Route::view('/tokens','tokens');
+
+    Route::view('/proves','proves');
 });
