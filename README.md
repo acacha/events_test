@@ -114,4 +114,8 @@ require('events-bootstrap');
 
 Comproveu compila ok npm run dev.
   
-  
+## Laravel Dusk
+
+Instal·leu seguint els passos de:
+
+https://laravel.com/docs/5.5/dusk#installation
