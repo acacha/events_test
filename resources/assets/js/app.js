@@ -10,6 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 require('events-bootstrap');
+// require('acacha-events')
 
 
 /**
