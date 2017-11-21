@@ -33,3 +33,4 @@ Projecte: tinkeringJsonApi
 # Tasques
 
 - Utilitzeu el menu de la sidebar per apuntar a les diferents URLS de la vostra aplicació
+- Instal·lar i configurar Laravel passport 
