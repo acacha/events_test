@@ -47,7 +47,7 @@ npm run dev
 Crear Carpeta Tests/Javascript a paquet (no a test) i posa fitxer setup.js:
 
 ```
-require('jsdom-global')
+require('jsdom-global')()
 ```
 
 Afegir npm run script a package.json amb el nom test:
