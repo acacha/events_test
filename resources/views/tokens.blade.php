@@ -4,6 +4,10 @@
 	Tokens
 @endsection
 
+@section('contentheader_title')
+	Tokens
+@endsection
+
 @section('main-content')
 	<passport-clients></passport-clients>
 	<passport-authorized-clients></passport-authorized-clients>
