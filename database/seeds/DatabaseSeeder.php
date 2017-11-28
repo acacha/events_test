@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
 
         create_admin_user();
 
-        first_user_as_events_manager();
+        initialize_events_permissions();
 
-        Artisan::call('passport:install');
+        first_user_as_events_manager();
 
         factory(Event::class,50)->create();
 

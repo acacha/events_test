@@ -190,6 +190,7 @@ Run:
 ```
 composer dumpautoload
 ```
+
 I al projecte test pq agafi els canvis execute:
 
 ```
