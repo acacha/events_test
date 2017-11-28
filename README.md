@@ -221,7 +221,7 @@ Executar els helpers:
 
 Al seed de la base de dades
 
-# Request Objects
+# (HTTP)Request Objects
 
 Crear tots els objectes per a totes les tipus de peticions per a User i Event. Exemple Users (ídem Events)
 
@@ -243,7 +243,7 @@ Afegir autoritzacions amb Laravel Permission:
 - Crear un rol manager per users (users-manager) i per a events (events-manager) amb permisos per fer totes les operacions 
 
 Events:
-- Un usuari pot veure, editar i eliminar events creats per ell mateix
+- Un usuari pot crear, veure, editar i eliminar events creats per ell mateix
 - Un usuari no pot veure, editar ni eliminar esdeveniment d'altres usuaris sinó té rol de manager
 
 Usuaris:
