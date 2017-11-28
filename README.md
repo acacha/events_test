@@ -1,3 +1,6 @@
+# Events test
+
+
 # Estructura
 
 2 projectes Github:
@@ -113,9 +116,52 @@ require('events-bootstrap');
 ```
 
 Comproveu compila ok npm run dev.
+
+## Laravel permission
+
+Instal·leu el suport seguinet les passes de (feu la instal·lació AL PAQUET!!!):
+
+https://github.com/spatie/laravel-permission#installation
+
+En resum:
+
+ $ cd events
+ $ composer require spatie/laravel-permission
+  
+Al projecte de tests 
+
+ $ cd ..
+ $ composer update 
+ 
+Veureu que instal·la Laravel Permission. 
+
+Ara a test executeu:
+
+```php
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
+```
+
+I ja podeu instal·lar les taules de roles i permisssos. Ara cal que els usuaris suportin rols i permisos
+afegint el Trait HasRoles al model app/User:
+
+ https://github.com/spatie/laravel-permission#usage
   
 ## Laravel Dusk
 
 Instal·leu seguint els passos de:
 
 https://laravel.com/docs/5.5/dusk#installation
+
+Recordeu de desactivar el autodiscover per tal de no tenir problemes amb Laravel Dusk al instal·lar en explotació
+(dona un error sinó ja que és molt important no executar Laravel Dusk a explotació per que permet impersonar usuaris)
+
+```
+"extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/dusk"
+            ]
+        }
+    },
+```
