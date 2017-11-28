@@ -165,3 +165,85 @@ Recordeu de desactivar el autodiscover per tal de no tenir problemes amb Laravel
         }
     },
 ```
+
+# Helpers de projecte
+
+Crear fitxer:
+
+```
+events/src/helpers.php
+```
+
+Afegir a autoload de events/composer.json:
+
+```
+"autoload": {
+        ...
+        "files" : [
+            "src/helpers.php"
+        ]
+    },
+```
+
+Run:
+ 
+```
+composer dumpautoload
+```
+I al projecte test pq agafi els canvis execute:
+
+```
+composer update acacha/events
+```
+
+Proveu amb tinker:
+
+```
+php artisan tinker;  
+Psy Shell v0.8.15 (PHP 7.0.22-0ubuntu0.16.04.1 — cli) by Justin Hileman
+>>> initialize_events_permissions()
+```
+
+Mètodes cal crear:
+- initialize_events_permissions: Crear tots els rols i permisos necessàries a l'aplicació
+- create_admin_user: crea usuari admin
+- first_user_as_events_manager
+
+Editar el fitxer events/composer.json
+
+# User admin i rol seeders
+
+Executar els helpers:
+- initialize_events_permissions
+- create_admin_user
+- first_user_as_events_manager
+
+Al seed de la base de dades
+
+# Request Objects
+
+Crear tots els objectes per a totes les tipus de peticions per a User i Event. Exemple Users (ídem Events)
+
+- ListUsers
+- StoreUser
+- EditUser
+- ShowUser
+- DestroyUser
+
+Implementar normes de validació Laravel (retornin 422 si error) i crear test per comprovar:
+- Comprovar email a usuaris: ha de ser únic i ha de ser un email
+
+Afegir autoritzacions amb Laravel Permission:
+
+- Crear helpers per omplir la base de dades:
+  - Vegeu apartat helpers
+- Adaptar els testos. Al setup assegurar-se que els permissos estan afegir a la base de dades: initialize_events_permissions  
+- Crear un permis per a cada operació
+- Crear un rol manager per users (users-manager) i per a events (events-manager) amb permisos per fer totes les operacions 
+
+Events:
+- Un usuari pot veure, editar i eliminar events creats per ell mateix
+- Un usuari no pot veure, editar ni eliminar esdeveniment d'altres usuaris sinó té rol de manager
+
+Usuaris:
+- Un usuari no pot editar ni eliminar altres usuaris sinó és users managers 
