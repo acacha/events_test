@@ -55,6 +55,32 @@ Dos opcions:
 - Camps de dates
 - Modals: similar als alerts però en una "finestra" nova
 
+## Dates
+
+Moment.js:
+
+```bash
+$ npm install moment --save 
+```
+
+
+## Toogle button
+
+https://github.com/euvl/vue-js-toggle-button
+
+```bash
+$ npm install vue-js-toggle-button --save
+```
+
+Per registrar el component podeu fer-ho al fitxer app.js (Tasques) o al event-bootstrap.js (CS) :
+
+```
+import ToggleButton from 'vue-js-toggle-button'
+Vue.use(ToggleButton)
+```
+
+Mireu l'exemple del professor
+
 # Modals
 
 Com funcionaven amb Jquery/Bootstrap:
@@ -134,10 +160,61 @@ Llibreries:
 
 # Millores a l'API
 
+Objectiu: millorar/ampliar la API
+
+Com:
+- SOLID
+  - S de SRP: Single Responsability Principle: Evitar que un mateix controlador faci masses coses (una i ben feta)
+  - O de Open to Extension Closed To modification: Extenem la funcionalitat: nous controladors però no modifiquem existent
+  - Les altres lletres per un altre dia ;-)
+  
+Recomanació de vídeo recurs: Cruddy By Design de Adam Wathan:
+- Github exemple: https://github.com/adamwathan/laracon2017/pull/4
+- Vídeo: https://www.youtube.com/watch?v=MF0jFKvS4SI
+
+
 Nous endpoints:
 - Poder marcar un esdeveniment com prioritari/assistiré si/no o el que es vulgui (Booleà)
-  - Que no sigui utilitzar edit de tota la tasca
-- Ídem que l'anterior però només per canviar la descripció
+  - Que no sigui utilitzar edit de tota la tasca (seria trampa i caldria modificar controlador existent)
+- Canviar camps concrets: només data de creació o actualització, només nom, només descripció
+
+Noves urls:
+
+Canvi d'estat: booleans(https://github.com/adamwathan/laracon2017/pull/4):
+------------------------
+
+En comptes de:
+- POST /ap1/v1/event/{event}/attend             EventsController@attend
+- POST /ap1/v1/event/{event}/unattend           EventsController@unattend
+
+Utilitzar:
+
+- POST /ap1/v1/attended-event                   AttendedEventsController@store
+- DELETE /ap1/v1/attended-event/{event}         AttendedEventsController@destroy
+
+Canvis de camps concrets(https://github.com/adamwathan/laracon2017/pull/2)
+--------------------------
+
+- PUT /ap1/v1/event/{event}/description             EventDescriptionController@update
+- PUT /ap1/v1/event/{event}/name                    EventNameController@update
+- PUT /ap1/v1/event/{event}/created_at              EventCreatedAtController@update
+- PUT /ap1/v1/event/{event}/updated_at              EventUpdatedAtController@update
+
+En comptes de:
+- POST /ap1/v1/event/{event}/update_description     EventsController@update_description
+- POST /ap1/v1/event/{event}/update_name            EventsController@update_name
+- POST /ap1/v1/event/{event}/update_created_at      EventsController@update_created_at
+- POST /ap1/v1/event/{event}/update_updated_at      EventsController@update_updated_at
+
+
+## Operacions que només canvien un camp
+
+- Un altre cop la idea és no tocar el controlador ja existent de Events
+- Un altre cop val
+- Al final podem detectar un patró de repetició. Per evitar codi WET podem agrupar per tipus de camp:
+
+
+## Camps booleans: canvis estat
 
 Concretament tip 4 de Cruddy By Design de Adam Wathan:
 - https://github.com/adamwathan/laracon2017/pull/4
